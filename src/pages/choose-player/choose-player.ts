@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+import { GamePage } from '../game/game';
 
 
 /**
@@ -22,11 +22,11 @@ export class ChoosePlayerPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChoosePlayerPage');
+    
   }
 
   chooseMode(isOnePlayer) {
-    this.navCtrl.push(HomePage, {isOnePlayer: isOnePlayer})
+    this.navCtrl.push(GamePage, {isOnePlayer: isOnePlayer})
   }
 
 }

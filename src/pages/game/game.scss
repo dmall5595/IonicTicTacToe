@@ -1,39 +1,31 @@
-page-home {
+page-game {
 
     .board {
-      background-color: #a45632;
+      background-color: #496892;
       color: #fff;
     }
-  
-    .gameStatus {
+
+    .mainText {
       margin: 0px;
       padding: 5px;
       color: #34495e;
-      // font-family: 'Dosis', Helvetica, sans-serif;
       text-transform: uppercase;
+    }
+  
+    .status {
       font-size: 5em;
-      font-weight: bold;
       text-align: center;
     }
 
-    .gameScores {
-      margin: 0px;
-      padding: 5px;
-      color: #34495e;
-      // font-family: 'Dosis', Helvetica, sans-serif;
-      text-transform: uppercase;
+    .scores {
       font-size: 2em;
-      font-weight: bold;
-      // text-align: center;
     }
     
     .restart {
-      background-color: #34495e;
+      background-color: #496892;
       color: #fff;
       border: 0px;
-      // font-family: 'Dosis', Helvetica, sans-serif;
       font-size: 1.4em;
-      font-weight: bold;
       margin: 0px;
       padding: 15px;
       width: 100%;
@@ -45,12 +37,10 @@ page-home {
     }
   
     .cell {
-      // width: 200px;
       height: 200px;
       box-sizing: border-box;
-      border: 3px solid #f4af78;
+      border: 3px solid #498c92;
       font-size: 8em; 
-      // font-family: 'Gochi Hand', sans-serif;
       text-align: center;
       padding-top: 30px;
     }

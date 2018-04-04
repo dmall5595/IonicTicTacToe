@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ChoosePlayerPage } from '../pages/choose-player/choose-player';
-import { HomePage } from '../pages/home/home';
 
 
 @Component({

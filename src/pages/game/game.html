@@ -5,32 +5,17 @@
 </ion-header>
 <ion-content padding>
 
-    <!-- <div class="gameStatus">
-        <button type="button">Previous</button>                
-        <span style="width: 100%;text-align: center">TEST</span>
-        <button type="button" style="float: right">Next</button>
-    </div>
-
-    <div>
-      <span> 
-        X Wins: {{x_wins}}
-      </span>
-      <span style="text-align:center"> 
-        {{gameStatusMessage}}
-      </span>
-      <span style="float:right"> 
-        O Wins: {{o_wins}}
-      </span>
-    </div> -->
-  <div class="gameStatus" >
+  <div class="status mainText" >
       {{gameStatusMessage}}
   </div>
-  <div class="gameScores">
+
+  <div class="scores mainText">
     X Wins: {{x_wins}}
     <span style="float:right"> 
       O Wins: {{o_wins}}
     </span>
   </div>
+
   <ion-grid class="board">
     <ion-row *ngFor="let row of [0,1,2]">
       <ion-col col-4 class="cell"
@@ -40,6 +25,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
 </ion-content>
 <ion-footer>
   <ion-toolbar>
