@@ -1,17 +1,48 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Tic Tac Toe</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+    <!-- <div class="gameStatus">
+        <button type="button">Previous</button>                
+        <span style="width: 100%;text-align: center">TEST</span>
+        <button type="button" style="float: right">Next</button>
+    </div>
+
+    <div>
+      <span> 
+        X Wins: {{x_wins}}
+      </span>
+      <span style="text-align:center"> 
+        {{gameStatusMessage}}
+      </span>
+      <span style="float:right"> 
+        O Wins: {{o_wins}}
+      </span>
+    </div> -->
+  <div class="gameStatus" >
+      {{gameStatusMessage}}
+  </div>
+  <div class="gameScores">
+    X Wins: {{x_wins}}
+    <span style="float:right"> 
+      O Wins: {{o_wins}}
+    </span>
+  </div>
+  <ion-grid class="board">
+    <ion-row *ngFor="let row of [0,1,2]">
+      <ion-col col-4 class="cell"
+            *ngFor="let col of [0,1,2]"
+            (click)="handleMove(col+row*3)">
+            <span *ngIf="squares[col+row*3] == 'O' || squares[col+row*3] == 'X'"> {{squares[col+row*3]}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+      <button class="restart" (click)="restartGame()">New Game</button>
+  </ion-toolbar>
+</ion-footer>
