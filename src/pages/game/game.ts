@@ -19,9 +19,7 @@ export class GamePage {
 
   // with one player, I'll always be x, computer will be o
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     this.isOnePlayer = this.navParams.get('isOnePlayer');
@@ -77,7 +75,6 @@ export class GamePage {
   }
 
   AIMove() {
-
     var bestSpot = this.minimax(this.squares, 'O');
 
     this.squares[bestSpot.index] = this.player;
@@ -93,7 +90,6 @@ export class GamePage {
   }
 
   minimax(newBoard, player) {
-
     var huPlayer = "X";
     var aiPlayer = "O";
 
@@ -166,23 +162,19 @@ export class GamePage {
 
   // returns the available spots on the board
   emptyIndexies(board) {
-    return  board.filter(s => s != "O" && s != "X");
+    return board.filter(s => s != "O" && s != "X");
   }
 
   // winning combinations using the board indexies for instace the first win could be 3 xes in a row
   winning(board, player) {
-    if((board[0] == player && board[1] == player && board[2] == player) ||
+    return ((board[0] == player && board[1] == player && board[2] == player) ||
       (board[3] == player && board[4] == player && board[5] == player) ||
       (board[6] == player && board[7] == player && board[8] == player) ||
       (board[0] == player && board[3] == player && board[6] == player) ||
       (board[1] == player && board[4] == player && board[7] == player) ||
       (board[2] == player && board[5] == player && board[8] == player) ||
       (board[0] == player && board[4] == player && board[8] == player) ||
-      (board[2] == player && board[4] == player && board[6] == player)) {
-      return true;
-    } else {
-      return false;
-    }
+      (board[2] == player && board[4] == player && board[6] == player))
   }
 
 }
