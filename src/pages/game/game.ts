@@ -34,7 +34,7 @@ export class GamePage {
       this.AIMove()
   }
 
-  get gameStatusMessage(){
+  get gameStatusMessage() {
     if (this.total_moves >= 9 && !this.winner) {
       return "Tie game!"
     } else {
@@ -76,8 +76,6 @@ export class GamePage {
       this.AIMove()
   }
 
-  // New Code
-
   AIMove() {
 
     var bestSpot = this.minimax(this.squares, 'O');
@@ -94,7 +92,7 @@ export class GamePage {
     this.player = this.player === 'X' ? 'O' : 'X';
   }
 
-  minimax(newBoard, player){
+  minimax(newBoard, player) {
 
     var huPlayer = "X";
     var aiPlayer = "O";
@@ -115,7 +113,7 @@ export class GamePage {
     var moves = [];
 
     // loop through available spots
-    for (var i = 0; i < availSpots.length; i++){
+    for (var i = 0; i < availSpots.length; i++) {
       //create an object for each and store the index of that spot that was stored as a number in the object's index key
       var move = {"score":"", "index":""};
       
@@ -143,15 +141,15 @@ export class GamePage {
 
     // if it is the computer's turn loop over the moves and choose the move with the highest score
     var bestMove;
-    if(player === aiPlayer){
+    if (player === aiPlayer) {
       var bestScore = -10000;
-      for(var i = 0; i < moves.length; i++){
-        if(moves[i].score > bestScore){
+      for(var i = 0; i < moves.length; i++) {
+        if(moves[i].score > bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
         }
       }
-    }else{
+    } else {
     // else loop over the moves and choose the move with the lowest score
       var bestScore = 10000;
       for(var i = 0; i < moves.length; i++){
@@ -167,26 +165,24 @@ export class GamePage {
   }
 
   // returns the available spots on the board
-  emptyIndexies(board){
+  emptyIndexies(board) {
     return  board.filter(s => s != "O" && s != "X");
   }
 
   // winning combinations using the board indexies for instace the first win could be 3 xes in a row
-  winning(board, player){
-  if (
-          (board[0] == player && board[1] == player && board[2] == player) ||
-          (board[3] == player && board[4] == player && board[5] == player) ||
-          (board[6] == player && board[7] == player && board[8] == player) ||
-          (board[0] == player && board[3] == player && board[6] == player) ||
-          (board[1] == player && board[4] == player && board[7] == player) ||
-          (board[2] == player && board[5] == player && board[8] == player) ||
-          (board[0] == player && board[4] == player && board[8] == player) ||
-          (board[2] == player && board[4] == player && board[6] == player)
-          ) {
-          return true;
-      } else {
-          return false;
-      }
+  winning(board, player) {
+    if((board[0] == player && board[1] == player && board[2] == player) ||
+      (board[3] == player && board[4] == player && board[5] == player) ||
+      (board[6] == player && board[7] == player && board[8] == player) ||
+      (board[0] == player && board[3] == player && board[6] == player) ||
+      (board[1] == player && board[4] == player && board[7] == player) ||
+      (board[2] == player && board[5] == player && board[8] == player) ||
+      (board[0] == player && board[4] == player && board[8] == player) ||
+      (board[2] == player && board[4] == player && board[6] == player)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
