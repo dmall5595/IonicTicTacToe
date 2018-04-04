@@ -81,12 +81,9 @@ export class GamePage {
     this.total_moves += 1
     if(this.winning(this.squares, this.player)) {
       this.winner = this.player;
-      if (this.winner == 'X')
-        this.x_wins += 1
-      else
-        this.o_wins += 1
+      this.o_wins += 1
     }
-    this.player = this.player === 'X' ? 'O' : 'X';
+    this.player = 'X'
   }
 
   minimax(newBoard, player) {
