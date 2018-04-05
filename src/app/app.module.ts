@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { GamePage } from '../pages/game/game';
 import { ChoosePlayerPage } from '../pages/choose-player/choose-player';
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-
 @Component({
   selector: 'page-game',
   templateUrl: 'game.html'
@@ -12,21 +11,18 @@ export class GamePage {
   player = Math.floor(Math.random() * 2)? 'X' : 'O';
   winner = null;
   total_moves = 0;
-  cell_size;
   x_wins = 0;
   o_wins = 0;
   isOnePlayer;
 
-  // with one player, I'll always be x, computer will be o
+  // with one player, player will be X, computer will be O
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     this.isOnePlayer = this.navParams.get('isOnePlayer');
 
-    for (var i = 0; i < this.squares.length; i++) {
-      this.squares[i] = i
-    }
+    this.fillBoard()
 
     if (this.isOnePlayer && this.player == 'O')
       this.AIMove()
@@ -41,49 +37,41 @@ export class GamePage {
     }
   }
 
-  handleMove(position) {
-    if ((this.isOnePlayer && this.player == 'X') || !this.isOnePlayer) { // If it is not computer's turn
-      if(!this.winner && (this.squares[position] != 'X' && this.squares[position] != 'O')) {
-        this.squares[position] = this.player;
-        this.total_moves += 1
-        if(this.winning(this.squares, this.player)) {
-          this.winner = this.player;
-          if (this.winner == 'X')
-            this.x_wins += 1
-          else
-            this.o_wins += 1
-        }
-        this.player = this.player === 'X' ? 'O' : 'X';
-        if (this.player == 'O' && this.isOnePlayer)
-          this.AIMove()
-      }
-    }
-  }
-
   restartGame() {
     this.squares = Array(9).fill(null);
     this.player = Math.floor(Math.random() * 2)? 'X' : 'O';
     this.winner = null;
     this.total_moves = 0
-
-    for (var i = 0; i < this.squares.length; i++) {
-      this.squares[i] = i
-    }
+    this.fillBoard()
 
     if (this.isOnePlayer && this.player == 'O')
       this.AIMove()
   }
 
+  handleMove(position) {
+    if ((this.isOnePlayer && this.player == 'X') || !this.isOnePlayer)  // If it is not computer's turn
+      if(!this.winner && (this.squares[position] != 'X' && this.squares[position] != 'O')) 
+        this.moveHelper(position)
+  }
+    
   AIMove() {
     var bestSpot = this.minimax(this.squares, 'O');
+    this.moveHelper(bestSpot.index)
+  }
 
-    this.squares[bestSpot.index] = this.player;
+  moveHelper(position) {
+    this.squares[position] = this.player;
     this.total_moves += 1
     if(this.winning(this.squares, this.player)) {
       this.winner = this.player;
-      this.o_wins += 1
+      if (this.winner == 'X')
+        this.x_wins += 1
+      else
+        this.o_wins += 1
     }
-    this.player = 'X'
+    this.player = this.player === 'X' ? 'O' : 'X';
+    if (this.player == 'O' && this.isOnePlayer)
+      this.AIMove()
   }
 
   minimax(newBoard, player) {
@@ -172,6 +160,12 @@ export class GamePage {
       (board[2] == player && board[5] == player && board[8] == player) ||
       (board[0] == player && board[4] == player && board[8] == player) ||
       (board[2] == player && board[4] == player && board[6] == player))
+  }
+
+  fillBoard() {
+    for (var i = 0; i < this.squares.length; i++) {
+      this.squares[i] = i
+    }
   }
 
 }
