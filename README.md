@@ -6,4 +6,4 @@ pass the device and play.
 
 ## How to run
 
-To run app install Node[https://nodejs.org/en/], the (ionic CLI)[https://ionicframework.com/docs/cli/], and then run the commands `npm install` and `ionic serve`
+To run app install [Node](https://nodejs.org/en/), the [ionic CLI](https://ionicframework.com/docs/cli/), and then run the commands `npm install` and `ionic serve`
